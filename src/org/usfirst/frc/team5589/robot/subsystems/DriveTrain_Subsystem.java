@@ -28,12 +28,14 @@ public class DriveTrain_Subsystem extends Subsystem{
 	@SuppressWarnings("deprecation")
 	public void Spin()
 	{
-		MainDrive.drive(0.5, 1);
+		MainDrive.drive(0.5, 1);  //sets half speed, and turning right
 	}
 
+
+	
 	@SuppressWarnings("deprecation")
 	public void Stop()
 	{
-		MainDrive.arcadeDrive(0, 0);
+		MainDrive.arcadeDrive(0, 0);  
 	}
 }
