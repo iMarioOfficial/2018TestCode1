@@ -1,0 +1,10 @@
+
+build/org/usfirst/frc/team5589/robot/subsystems/DriveTrain_Subsystem.class
+dist/FRCUserProgram.jar
+bin/org/usfirst/frc/team5589/robot/2018TestCode/.gitattributes
+bin/org/usfirst/frc/team5589/robot/subsystems/DriveTrain_Subsystem.class
+build/jars/CTRE_Phoenix.jar
+*.class
+*.class
+*.class
+*.jar

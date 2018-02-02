@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 
-public class ArcadeDrive_Command extends Command{
+public class JoystickDrive_Command extends Command{
 
 	
-	public ArcadeDrive_Command()
+	public JoystickDrive_Command()
 	{
 		requires(Robot.DriveTrain);
 	}

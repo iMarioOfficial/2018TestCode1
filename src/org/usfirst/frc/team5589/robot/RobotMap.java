@@ -16,8 +16,10 @@ package org.usfirst.frc.team5589.robot;
 public class RobotMap {
 
 	public static final int
-		Drive_Left = 0,
-		Drive_Right = 1;
+		Drive_Front_Left = 0,
+		Drive_Back_Left = 1,
+		Drive_Front_Right = 2,
+		Drive_Back_Right = 3;
 		
 	
 }
