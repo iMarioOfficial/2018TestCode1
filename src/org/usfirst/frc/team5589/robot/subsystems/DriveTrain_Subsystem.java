@@ -42,7 +42,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	
 	public void Spin()
 	{
-<<<<<<< HEAD
+
 	    Timer time = new Timer();  
 		time.start();  //start timer
 		
@@ -54,19 +54,11 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 	}
 
-	public void Stop()
-	{
-		MainDrive.stopMotor();
-=======
-		MainDrive.drive(0.5, 1);  //sets half speed, and turning right
-	}
 
-
-	
 	@SuppressWarnings("deprecation")
 	public void Stop()
 	{
-		MainDrive.arcadeDrive(0, 0);  
->>>>>>> ecd5c1eee43b38fbb432092cbb38017f742518ad
+		MainDrive.stopMotor();  
+
 	}
 }
