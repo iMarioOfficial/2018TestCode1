@@ -8,3 +8,4 @@ build/jars/CTRE_Phoenix.jar
 *.class
 *.class
 *.jar
+bin/org/usfirst/frc/team5589/robot/subsystems/DriveTrain_Subsystem.class
