@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain_Subsystem extends Subsystem{
 	
-	Spark m_frontLeft = new Spark(0);
+	   Spark m_frontLeft = new Spark(0);
 	   Spark m_rearLeft = new Spark(1);
 	   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
 
@@ -30,7 +30,6 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void JoystickDrive(Joystick Driver)
 	{
 		m_left.setInverted(true);

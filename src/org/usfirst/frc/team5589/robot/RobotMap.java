@@ -7,19 +7,9 @@
 
 package org.usfirst.frc.team5589.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
+
 public class RobotMap {
 
-	public static final int
-		Drive_Front_Left = 0,
-		Drive_Back_Left = 1,
-		Drive_Front_Right = 2,
-		Drive_Back_Right = 3;
-		
+
 	
 }
