@@ -43,11 +43,14 @@ public class DriveTrain_Subsystem extends Subsystem{
 	    Timer time = new Timer();  
 		time.start();  //start timer
 		
-		while(time.get() < 1.5) {   //spin for less than 1.5 seconds
-	    MainDrive.arcadeDrive(0.1, 1);
+		while(time.get() < 1) {   //spin for less than 1 second
+	    
+		m_left.set(0);  //set right side at 0
+		m_right.set(0.2);  //set left at 1/5 speed so that it spins moderately fast, on the spot
 		
 		}
 		MainDrive.stopMotor();  
+		time.stop();
 		
 	}
 
