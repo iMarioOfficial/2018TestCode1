@@ -24,7 +24,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	 
 	
 	
-	@Override
+	
 	protected void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive_Command());
 		
@@ -34,7 +34,12 @@ public class DriveTrain_Subsystem extends Subsystem{
 	{
 		m_left.setInverted(true);
 	
-		MainDrive.arcadeDrive(Driver.getX(), Driver.getY());
+		MainDrive.setSafetyEnabled(false);
+		
+		MainDrive.arcadeDrive(-Driver.getX(), Driver.getY());
+		
+		m_right.set(m_right.get() * 0.85);
+		
 	}
 	
 	public void Spin()
@@ -45,19 +50,22 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 		while(time.get() < 1) {   //spin for less than 1 second
 	    
-		m_left.set(0);  //set right side at 0
-		m_right.set(0.2);  //set left at 1/5 speed so that it spins moderately fast, on the spot
+		m_left.set(0.5);  //set right side at 0
+		m_right.set(-0.25);  //set left at 1/5 speed so that it spins moderately fast, on the spot
 		
 		}
-		MainDrive.stopMotor();  
-		time.stop();
 		
+		m_left.set(0);
+		m_right.set(0);
+		
+	
 	}
 
 
 	public void Stop()
 	{
-		MainDrive.stopMotor();  
+		m_left.set(0);
+		m_right.set(0);
 
 	}
 }

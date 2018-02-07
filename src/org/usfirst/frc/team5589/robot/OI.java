@@ -26,7 +26,7 @@ public class OI {
 	public OI()
 	{
 		SpinButton.whenPressed(new Spin_Command());
-		StopButton.whenPressed(new StopDriving_Command());
+		StopButton.whileHeld(new StopDriving_Command());
 	}
 		
 		public Joystick getDriverJoystick()
