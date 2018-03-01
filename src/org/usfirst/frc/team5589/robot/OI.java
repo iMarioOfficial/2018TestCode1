@@ -23,7 +23,9 @@ public class OI {
 	
 	public OI()
 	{
-		StopButton.whenPressed(new StopDriving_Command());
+
+			StopButton.whileHeld(new StopDriving_Command());
+
 	}
 		
 		public XboxController getDriverJoystick()

@@ -24,7 +24,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	 
 	
 	
-	@Override
+	
 	protected void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive_Command());
 		
@@ -34,27 +34,27 @@ public class DriveTrain_Subsystem extends Subsystem{
 	{
 		m_left.setInverted(true);
 	
+
 		double YAxis = 0;
 		
 		if(Driver.getTriggerAxis(Hand.kLeft) != 0)
 		{
 			YAxis = -Driver.getTriggerAxis(Hand.kLeft);
 		}
-		
+	
+	
 		if(Driver.getTriggerAxis(Hand.kRight) != 0)
 		{
 			YAxis = Driver.getTriggerAxis(Hand.kRight);
 		}
 		
-		MainDrive.arcadeDrive(Driver.getX(Hand.kLeft), YAxis);//y);
 	}
-	
-	
 
 
 	public void Stop()
 	{
-		MainDrive.stopMotor();  
+		m_left.set(0);
+		m_right.set(0);
 
 	}
 }
