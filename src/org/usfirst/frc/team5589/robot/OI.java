@@ -7,10 +7,9 @@
 
 package org.usfirst.frc.team5589.robot;
 
-import org.usfirst.frc.team5589.robot.commands.Spin_Command;
 import org.usfirst.frc.team5589.robot.commands.StopDriving_Command;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -19,20 +18,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	Joystick DriverStick = new Joystick(0);
-	JoystickButton SpinButton = new JoystickButton(DriverStick, 2);
-	JoystickButton StopButton = new JoystickButton(DriverStick, 1);
+	XboxController DriverController = new XboxController(1);
+	JoystickButton StopButton = new JoystickButton(DriverController, 2);
 	
 	public OI()
 	{
-		SpinButton.whenPressed(new Spin_Command());
 		StopButton.whenPressed(new StopDriving_Command());
 	}
 		
-		public Joystick getDriverJoystick()
-		{
-			return DriverStick;
-			
+		public XboxController getDriverJoystick()
+		{;
+		
+		return DriverController;	
+		
 		}
 		
 	

@@ -2,10 +2,10 @@ package org.usfirst.frc.team5589.robot.subsystems;
 
 import org.usfirst.frc.team5589.robot.commands.JoystickDrive_Command;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -30,29 +30,26 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 	}
 	
-	public void JoystickDrive(Joystick Driver)
+	public void JoystickDrive(XboxController Driver)
 	{
 		m_left.setInverted(true);
 	
-		MainDrive.arcadeDrive(Driver.getX(), Driver.getY());
+		double YAxis = 0;
+		
+		if(Driver.getTriggerAxis(Hand.kLeft) != 0)
+		{
+			YAxis = -Driver.getTriggerAxis(Hand.kLeft);
+		}
+		
+		if(Driver.getTriggerAxis(Hand.kRight) != 0)
+		{
+			YAxis = Driver.getTriggerAxis(Hand.kRight);
+		}
+		
+		MainDrive.arcadeDrive(Driver.getX(Hand.kLeft), YAxis);//y);
 	}
 	
-	public void Spin()
-	{
-
-	    Timer time = new Timer();  
-		time.start();  //start timer
-		
-		while(time.get() < 1) {   //spin for less than 1 second
-	    
-		m_left.set(0);  //set right side at 0
-		m_right.set(0.2);  //set left at 1/5 speed so that it spins moderately fast, on the spot
-		
-		}
-		MainDrive.stopMotor();  
-		time.stop();
-		
-	}
+	
 
 
 	public void Stop()
