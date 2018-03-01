@@ -48,6 +48,9 @@ public class DriveTrain_Subsystem extends Subsystem{
 			YAxis = Driver.getTriggerAxis(Hand.kRight);
 		}
 		
+		
+		MainDrive.arcadeDrive(Driver.getX(Hand.kLeft), YAxis);
+		
 	}
 
 

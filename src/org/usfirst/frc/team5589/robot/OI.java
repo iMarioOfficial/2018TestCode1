@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5589.robot;
 
+import org.usfirst.frc.team5589.robot.commands.OpenClaw_Command;
 import org.usfirst.frc.team5589.robot.commands.StopDriving_Command;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -19,17 +20,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	XboxController DriverController = new XboxController(1);
+	
 	JoystickButton StopButton = new JoystickButton(DriverController, 2);
+	JoystickButton ClawButton = new JoystickButton(DriverController, 1);
 	
 	public OI()
 	{
 
 			StopButton.whileHeld(new StopDriving_Command());
-
+			ClawButton.whileHeld(new OpenClaw_Command());
 	}
 		
 		public XboxController getDriverJoystick()
-		{;
+		{
 		
 		return DriverController;	
 		

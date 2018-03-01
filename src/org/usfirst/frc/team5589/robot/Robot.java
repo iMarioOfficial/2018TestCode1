@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 import org.usfirst.frc.team5589.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5589.robot.subsystems.ArmAndClaw_Subsystem;
 import org.usfirst.frc.team5589.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5589.robot.subsystems.ExampleSubsystem;
 
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
 	
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain_Subsystem DriveTrain = new DriveTrain_Subsystem();
+	public static final ArmAndClaw_Subsystem ArmAndClaw = new ArmAndClaw_Subsystem();
 	public static OI oi;
 
 	Command m_autonomousCommand;
