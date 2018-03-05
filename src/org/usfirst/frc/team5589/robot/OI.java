@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	XboxController DriverController = new XboxController(1);
+	XboxController DriverController = new XboxController(0);
 	
 	JoystickButton StopButton = new JoystickButton(DriverController, 2);
 	JoystickButton ClawButton = new JoystickButton(DriverController, 1);
