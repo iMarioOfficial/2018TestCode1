@@ -41,9 +41,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 		{
 			YAxis = -Driver.getTriggerAxis(Hand.kLeft);
 		}
-	
-	
-		if(Driver.getTriggerAxis(Hand.kRight) != 0)
+		else if(Driver.getTriggerAxis(Hand.kRight) != 0)
 		{
 			YAxis = Driver.getTriggerAxis(Hand.kRight);
 		}
