@@ -47,7 +47,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 		}
 		
 		
-		MainDrive.arcadeDrive(Driver.getX(Hand.kLeft), YAxis);
+		MainDrive.arcadeDrive(- Driver.getX(Hand.kLeft), YAxis);
 		
 	}
 

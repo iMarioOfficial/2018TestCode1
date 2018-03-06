@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5589.robot.subsystems;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -31,7 +30,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void OpenClaw()
 	{
-		m_Claw.set(0.25);
+		m_Claw.set(0.5);
 	}
 
 }
