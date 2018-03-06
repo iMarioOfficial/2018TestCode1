@@ -14,6 +14,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   Spark m_frontLeft = new Spark(0);
 	   Spark m_rearLeft = new Spark(1);
 	   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+	   
 
 	   Spark m_frontRight = new Spark(2);
 	   Spark m_rearRight = new Spark(3);
@@ -21,8 +22,7 @@ public class DriveTrain_Subsystem extends Subsystem{
  
 	   ////
 	   DifferentialDrive MainDrive = new DifferentialDrive(m_left, m_right);
-	 
-	
+
 	
 	
 	protected void initDefaultCommand() {
@@ -53,7 +53,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 
 
 	public void Stop()
-	{
+	{	
 		m_left.set(0);
 		m_right.set(0);
 

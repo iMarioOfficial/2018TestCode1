@@ -22,12 +22,15 @@ public class OI {
 	XboxController DriverController = new XboxController(0);
 	
 	JoystickButton StopButton = new JoystickButton(DriverController, 2);
+	JoystickButton ClawButton = new JoystickButton(DriverController, 1);
 	
 	
 	public OI()
 	{
 
 			StopButton.whileHeld(new StopDriving_Command());
+			ClawButton.whileHeld(new OpenClaw_Command());
+			
 	}
 		
 		public XboxController getDriverJoystick()
