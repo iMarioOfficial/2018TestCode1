@@ -25,13 +25,10 @@ public class DriveTrain_Subsystem extends Subsystem{
  
 	   ////
 	   DifferentialDrive MainDrive = new DifferentialDrive(m_left, m_right);
-<<<<<<< HEAD
+
 	 
 	   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
        // the echo pulse and DigitalInput 1 for the trigger pulse
-=======
-
->>>>>>> a0030ec3a2a84f67dcc5d4b0857497716ec8705d
 	
 	
 	protected void initDefaultCommand() {
