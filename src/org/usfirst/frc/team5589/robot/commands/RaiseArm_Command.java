@@ -8,7 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RaiseArm_Command extends Command{
 
-	
+	public RaiseArm_Command()
+	{
+		
+	}
 	
 	protected void initialise()
 	{

@@ -13,7 +13,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	Talon m_Claw = new Talon(5);
 	
 	protected void initDefaultCommand() {
-		
+
 		
 	}
 	
@@ -21,6 +21,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void RaiseArm(XboxController Driver)
 	{
+		m_Arm.setSafetyEnabled(false);
 		m_Arm.set(Driver.getY(Hand.kRight));
 		
 	}
@@ -30,6 +31,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void OpenClaw()
 	{
+		m_Claw.setSafetyEnabled(false);
 		m_Claw.set(0.5);
 	}
 

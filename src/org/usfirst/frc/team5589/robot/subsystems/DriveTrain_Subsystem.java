@@ -17,6 +17,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   Spark m_frontLeft = new Spark(0);
 	   Spark m_rearLeft = new Spark(1);
 	   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+	   
 
 	   Spark m_frontRight = new Spark(2);
 	   Spark m_rearRight = new Spark(3);
@@ -24,9 +25,13 @@ public class DriveTrain_Subsystem extends Subsystem{
  
 	   ////
 	   DifferentialDrive MainDrive = new DifferentialDrive(m_left, m_right);
+<<<<<<< HEAD
 	 
 	   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
        // the echo pulse and DigitalInput 1 for the trigger pulse
+=======
+
+>>>>>>> a0030ec3a2a84f67dcc5d4b0857497716ec8705d
 	
 	
 	protected void initDefaultCommand() {
@@ -159,7 +164,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	}
 	
 	public void Stop()
-	{
+	{	
 		m_left.set(0);
 		m_right.set(0);
 

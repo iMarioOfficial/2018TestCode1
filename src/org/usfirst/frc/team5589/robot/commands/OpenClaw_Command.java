@@ -9,6 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class OpenClaw_Command extends Command{
 
+	public OpenClaw_Command()
+	{
+		
+	}
 	
 	
 	protected void initialise()
@@ -19,9 +23,6 @@ public class OpenClaw_Command extends Command{
 	@Override
 	protected void execute()
 	{
-		XboxController AButton = Robot.oi.getDriverJoystick();
-		
-		if(AButton.getAButton() == true)
 			Robot.ArmAndClaw.OpenClaw();
 	}
 	
