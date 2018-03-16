@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5589.robot;
 
 import org.usfirst.frc.team5589.robot.commands.OpenClaw_Command;
+import org.usfirst.frc.team5589.robot.commands.RaiseArm_Command;
 import org.usfirst.frc.team5589.robot.commands.StopDriving_Command;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -22,12 +23,16 @@ public class OI {
 	XboxController DriverController = new XboxController(0);
 	
 	JoystickButton StopButton = new JoystickButton(DriverController, 2);
+	JoystickButton ToggleArmButton = new JoystickButton(DriverController, 6);
 	
 	
 	public OI()
 	{
 
 			StopButton.whileHeld(new StopDriving_Command());
+			ToggleArmButton.toggleWhenActive(new RaiseArm_Command());
+			//if above doesnt work then try below
+			//ToggleArmButton.whileHeld(new RaiseArmCommand());
 	}
 		
 		public XboxController getDriverJoystick()

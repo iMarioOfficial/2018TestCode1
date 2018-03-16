@@ -2,9 +2,12 @@ package org.usfirst.frc.team5589.robot.subsystems;
 
 import org.usfirst.frc.team5589.robot.commands.JoystickDrive_Command;
 
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -22,7 +25,8 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   ////
 	   DifferentialDrive MainDrive = new DifferentialDrive(m_left, m_right);
 	 
-	
+	   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
+       // the echo pulse and DigitalInput 1 for the trigger pulse
 	
 	
 	protected void initDefaultCommand() {
@@ -51,7 +55,109 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 	}
 
+	public void SpinTest()
+	{
+		Timer testTime = new Timer();
+		
+		while(testTime.get() < 0.5)
+		{
+		m_left.set(0.15);
+		m_right.set(-0.15);
+		}
+		
+		m_left.set(0);
+		m_right.set(0);
+	}
 
+	public void Spin(char side, double speed)
+	{
+		Timer time = new Timer();
+		time.start();
+	
+		if(side == 'L')
+		{
+			while(time.get() < 0.7)
+			{
+				m_right.set(speed);
+				m_left.set(-speed);	
+			}
+			
+			m_right.set(0);
+			m_left.set(0);		
+			
+			
+			time.stop();
+		}
+		else
+		{
+			while(time.get() < 0.7)
+			{
+			m_left.set(speed);
+			m_right.set(-speed);
+			}
+			m_right.set(0);
+			m_left.set(0);
+			time.stop();
+		}
+		
+		
+		
+			
+	}
+	
+	public double getDistance()
+	{
+		ultra.setAutomaticMode(true); // turns on automatic mode
+		
+		double range = ultra.getRangeInches(); // reads the range on the ultrasonic sensor
+		return range;
+	}
+	
+	public char getFieldPosition()
+	{
+		char fieldPos = 'N';
+		
+		Spin('L', 0.15);
+		double leftDist = getDistance();
+		
+		Spin('R', 0.30);
+		double rightDist = getDistance();
+		
+		if(leftDist > rightDist )
+		{
+			fieldPos = 'R';
+		}
+		if(leftDist == rightDist)
+		{
+			fieldPos = 'M';
+		}
+		
+		if(leftDist < rightDist)
+		{
+			fieldPos = 'M';
+		}
+		
+		
+			return fieldPos;
+	}
+	
+	public void Autonomous()
+	{
+		
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+                if(gameData.length() > 0)
+                {
+		  if(gameData.charAt(0) == 'L')
+		  {
+			//Put left auto code here
+			  
+		  } else {
+			//Put right auto code here
+		  }
+                }
+	}
+	
 	public void Stop()
 	{
 		m_left.set(0);

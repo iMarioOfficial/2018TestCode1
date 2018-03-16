@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5589.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 import org.usfirst.frc.team5589.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5589.robot.commands.TestAutonomous_Command;
 import org.usfirst.frc.team5589.robot.subsystems.ArmAndClaw_Subsystem;
 import org.usfirst.frc.team5589.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5589.robot.subsystems.ExampleSubsystem;
@@ -40,11 +42,16 @@ public class Robot extends TimedRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+	
+	
+	
 	@Override
 	public void robotInit() {
 		oi = new OI();
 		
-
+		
+		
+		
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
@@ -64,11 +71,14 @@ public class Robot extends TimedRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
+	
+	
 
+	
 
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = new TestAutonomous_Command();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -81,6 +91,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
+		
 		
 	}
 
