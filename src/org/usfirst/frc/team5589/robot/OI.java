@@ -26,7 +26,7 @@ public class OI {
 
 	JoystickButton ToggleArmButton = new JoystickButton(DriverController, 6);
 
-	JoystickButton ToggleClawButton = new JoystickButton(DriverController, 1);
+	JoystickButton ClawButton = new JoystickButton(DriverController, 5);
 
 	JoystickButton MoveClawButton = new JoystickButton(DriverController, 3);
 	
@@ -37,7 +37,7 @@ public class OI {
 
 			ToggleArmButton.toggleWhenActive(new RaiseArm_Command());
 			
-		   ToggleClawButton.toggleWhenActive(new OpenClaw_Command());
+			ClawButton.whileHeld(new OpenClaw_Command());
 
 	}
 		
@@ -48,9 +48,5 @@ public class OI {
 		
 		}
 		
-	
-		public JoystickButton getClawButton()
-		{
-			return MoveClawButton;
-		}
 }
+		

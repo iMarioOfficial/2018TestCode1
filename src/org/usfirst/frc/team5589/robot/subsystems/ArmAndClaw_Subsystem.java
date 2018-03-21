@@ -25,7 +25,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	public void RaiseArm(XboxController Driver)
 	{
 		m_Arm.setSafetyEnabled(false);
-		m_Arm.set(Driver.getY(Hand.kRight));
+		m_Arm.set(-Driver.getY(Hand.kRight));
 		
 	}
 	
@@ -34,11 +34,9 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void OpenClaw()
 	{
-		while(Robot.oi.getClawButton().get() == true)
-		{
-		m_Claw.setSafetyEnabled(false);
+		
 		m_Claw.set(0.15);
-		}
+	
 		
 	}
 
