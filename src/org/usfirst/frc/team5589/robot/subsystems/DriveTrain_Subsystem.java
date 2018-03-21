@@ -3,8 +3,10 @@ package org.usfirst.frc.team5589.robot.subsystems;
 import org.usfirst.frc.team5589.robot.commands.JoystickDrive_Command;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
@@ -23,13 +25,15 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   Spark m_rearRight = new Spark(3);
 	   SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
  
-	   ////
-	   DifferentialDrive MainDrive = new DifferentialDrive(m_left, m_right);
+	   @SuppressWarnings("deprecation")
+	   RobotDrive MainDrive = new RobotDrive(m_left, m_right);
 
 	 
-	   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
+	//   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
        // the echo pulse and DigitalInput 1 for the trigger pulse
 	
+	  AnalogGyro gyro = new AnalogGyro(1);
+	 
 	
 	protected void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive_Command());
@@ -73,40 +77,26 @@ public class DriveTrain_Subsystem extends Subsystem{
 
 	public void Spin(char side, double speed)
 	{
-		Timer time = new Timer();
-		time.start();
+		  double Kp = 0.03;
+		 double OGangle = gyro.getAngle(); // get current heading
 	
 		if(side == 'L')
 		{
-			while(time.get() < 0.7)
-			{
-				m_right.set(speed);
-				m_left.set(-speed);	
-			}
+			MainDrive.drive(speed, OGangle - 15 * Kp);
+		
 			
-			m_right.set(0);
-			m_left.set(0);		
-			
-			
-			time.stop();
 		}
 		else
 		{
-			while(time.get() < 0.7)
-			{
-			m_left.set(speed);
-			m_right.set(-speed);
-			}
-			m_right.set(0);
-			m_left.set(0);
-			time.stop();
+		MainDrive.drive(speed, OGangle + 15 * Kp);
+			
 		}
 		
 		
 		
 			
 	}
-	
+	/*
 	public double getDistance()
 	{
 		ultra.setAutomaticMode(true); // turns on automatic mode
@@ -153,12 +143,15 @@ public class DriveTrain_Subsystem extends Subsystem{
 		  if(gameData.charAt(0) == 'L')
 		  {
 			//Put left auto code here
+			//switch statement which field position and drive at angle accordingly
 			  
 		  } else {
 			//Put right auto code here
+			 //switch statement which field position and drive at angle accordingly
 		  }
                 }
 	}
+*/
 	
 	public void Stop()
 	{	

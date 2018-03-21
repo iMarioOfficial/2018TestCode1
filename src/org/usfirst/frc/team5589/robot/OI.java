@@ -35,12 +35,8 @@ public class OI {
 			StopButton.whileHeld(new StopDriving_Command());
 
 			ToggleArmButton.toggleWhenActive(new RaiseArm_Command());
-			//if above doesnt work then try below
-			//ToggleArmButton.whileHeld(new RaiseArmCommand());
-
-			ClawButton.whileHeld(new OpenClaw_Command());
 			
-			
+		   	ClawButton.whenPressed(new OpenClaw_Command());
 
 	}
 		
