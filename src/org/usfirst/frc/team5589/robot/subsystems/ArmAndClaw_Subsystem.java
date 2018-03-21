@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5589.robot.subsystems;
 
+import org.usfirst.frc.team5589.robot.Robot;
+
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
@@ -32,10 +34,11 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void OpenClaw()
 	{
-	
+		while(Robot.oi.getClawButton().get() == true)
+		{
 		m_Claw.setSafetyEnabled(false);
-		m_Claw.set(-0.15);
-	
+		m_Claw.set(0.15);
+		}
 		
 	}
 

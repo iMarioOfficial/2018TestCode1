@@ -29,7 +29,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   RobotDrive MainDrive = new RobotDrive(m_left, m_right);
 
 	 
-	//   Ultrasonic ultra = new Ultrasonic(1,1); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
+	//   Ultrasonic ultra = new Ultrasonic(0,0); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
        // the echo pulse and DigitalInput 1 for the trigger pulse
 	
 	  AnalogGyro gyro = new AnalogGyro(1);
