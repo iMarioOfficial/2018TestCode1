@@ -35,7 +35,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	public void OpenClaw(XboxController Driver)
 	{
 		m_Claw.setSafetyEnabled(false);
-		double rstickXValue = Driver.getX(Hand.kRight);
+		double rstickXValue = Driver.getTriggerAxis(Hand.kLeft);
 		m_Claw.set(rstickXValue);
 	
 		

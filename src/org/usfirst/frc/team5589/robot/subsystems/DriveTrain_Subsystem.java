@@ -52,24 +52,16 @@ public class DriveTrain_Subsystem extends Subsystem{
 		m_left.setInverted(true);
 	
 
-		double YAxis = 0;
 		
-		if(Driver.getTriggerAxis(Hand.kLeft) != 0)
-		{
-			YAxis = -Driver.getTriggerAxis(Hand.kLeft);
-		}
-		else if(Driver.getTriggerAxis(Hand.kRight) != 0)
-		{
-			YAxis = Driver.getTriggerAxis(Hand.kRight);
-		}
+		MainDrive.arcadeDrive(-(Driver.getX(Hand.kLeft)), -(Driver.getY(Hand.kLeft)));
 		
 		
-		MainDrive.arcadeDrive(-(Driver.getX(Hand.kLeft)), YAxis);
 		
 	}
 
 	public void DistanceTest()
 	{
+		
 		while(getDistance() > 36)
 		{
 			m_left.set(0);
@@ -80,6 +72,9 @@ public class DriveTrain_Subsystem extends Subsystem{
 			m_left.set(-0.15);
 			m_right.set(-0.15);
 		}
+	
+	
+		
 	}
 	
 	
@@ -98,8 +93,9 @@ public class DriveTrain_Subsystem extends Subsystem{
 		}
 		else
 		{
+			//timer so it spins for 1/3 sec
 		MainDrive.drive(speed, OGangle + 25 * Kp);
-			
+		//now get angle and drive straight	
 		}
 		
 		
@@ -144,7 +140,6 @@ public class DriveTrain_Subsystem extends Subsystem{
 			return fieldPos;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void Autonomous()
 	{
 		

@@ -29,7 +29,7 @@ public class OI {
 
 	JoystickButton ClawButton = new JoystickButton(DriverController, 5);
 
-	JoystickButton testDistance = new JoystickButton(DriverController, 7);
+	JoystickButton testDistance = new JoystickButton(DriverController, 1);
 	
 	
 	public OI()
