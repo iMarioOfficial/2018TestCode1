@@ -39,7 +39,7 @@ public class OI {
 
 			ToggleArmButton.toggleWhenActive(new RaiseArm_Command());
 			
-			ClawButton.whileHeld(new OpenClaw_Command());
+			ClawButton.toggleWhenActive(new OpenClaw_Command());
 			
 			testDistance.toggleWhenPressed(new TestAutonomous_Command());
 

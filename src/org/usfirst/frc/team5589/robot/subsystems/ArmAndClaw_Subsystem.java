@@ -26,20 +26,17 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 		m_Arm.set(-rstickValue);
 		
 		
-		while(rstickValue < 0)
-		{
-			m_Arm.set(0.125);
-		}
 		
 	}
 	
 	
 	//Open Claw
 	
-	public void OpenClaw()
+	public void OpenClaw(XboxController Driver)
 	{
-		
-		m_Claw.set(0.15);
+		m_Claw.setSafetyEnabled(false);
+		double rstickXValue = Driver.getX(Hand.kRight);
+		m_Claw.set(rstickXValue);
 	
 		
 	}

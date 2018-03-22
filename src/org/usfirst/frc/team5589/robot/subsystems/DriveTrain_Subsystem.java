@@ -29,9 +29,11 @@ public class DriveTrain_Subsystem extends Subsystem{
  
 	   @SuppressWarnings("deprecation")
 	   RobotDrive MainDrive = new RobotDrive(m_left, m_right);
+	   
 
 	 
 	  AnalogInput ultrasonic = new AnalogInput(0); 
+	  
 	
 	  AnalogGyro gyro = new AnalogGyro(1);
 	  double OGangle = gyro.getAngle(); // get current heading
@@ -46,6 +48,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 	@SuppressWarnings("deprecation")
 	public void JoystickDrive(XboxController Driver)
 	{
+		MainDrive.setSafetyEnabled(false);
 		m_left.setInverted(true);
 	
 
@@ -141,6 +144,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 			return fieldPos;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void Autonomous()
 	{
 		

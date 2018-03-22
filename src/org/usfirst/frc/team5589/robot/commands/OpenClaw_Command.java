@@ -23,7 +23,7 @@ public class OpenClaw_Command extends Command{
 	@Override
 	protected void execute()
 	{
-			Robot.ArmAndClaw.OpenClaw();
+			Robot.ArmAndClaw.OpenClaw(Robot.oi.getDriverJoystick());
 	}
 	
 	@Override
