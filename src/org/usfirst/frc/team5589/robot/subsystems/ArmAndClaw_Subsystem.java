@@ -1,10 +1,7 @@
 package org.usfirst.frc.team5589.robot.subsystems;
 
-import org.usfirst.frc.team5589.robot.Robot;
-
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -24,8 +21,15 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	
 	public void RaiseArm(XboxController Driver)
 	{
+		double rstickValue = Driver.getY(Hand.kRight);
 		m_Arm.setSafetyEnabled(false);
-		m_Arm.set(-Driver.getY(Hand.kRight));
+		m_Arm.set(-rstickValue);
+		
+		
+		while(rstickValue < 0)
+		{
+			m_Arm.set(0.125);
+		}
 		
 	}
 	

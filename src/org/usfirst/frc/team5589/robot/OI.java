@@ -10,6 +10,7 @@ package org.usfirst.frc.team5589.robot;
 import org.usfirst.frc.team5589.robot.commands.OpenClaw_Command;
 import org.usfirst.frc.team5589.robot.commands.RaiseArm_Command;
 import org.usfirst.frc.team5589.robot.commands.StopDriving_Command;
+import org.usfirst.frc.team5589.robot.commands.TestAutonomous_Command;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -28,7 +29,8 @@ public class OI {
 
 	JoystickButton ClawButton = new JoystickButton(DriverController, 5);
 
-	JoystickButton MoveClawButton = new JoystickButton(DriverController, 3);
+	JoystickButton testDistance = new JoystickButton(DriverController, 7);
+	
 	
 	public OI()
 	{
@@ -38,6 +40,8 @@ public class OI {
 			ToggleArmButton.toggleWhenActive(new RaiseArm_Command());
 			
 			ClawButton.whileHeld(new OpenClaw_Command());
+			
+			testDistance.toggleWhenPressed(new TestAutonomous_Command());
 
 	}
 		

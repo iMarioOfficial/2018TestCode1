@@ -1,9 +1,11 @@
 package org.usfirst.frc.team5589.robot.subsystems;
 
+
 import org.usfirst.frc.team5589.robot.commands.JoystickDrive_Command;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -29,10 +31,11 @@ public class DriveTrain_Subsystem extends Subsystem{
 	   RobotDrive MainDrive = new RobotDrive(m_left, m_right);
 
 	 
-	//   Ultrasonic ultra = new Ultrasonic(0,0); // creates the ultra object andassigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for 
-       // the echo pulse and DigitalInput 1 for the trigger pulse
+	  AnalogInput ultrasonic = new AnalogInput(0); 
 	
 	  AnalogGyro gyro = new AnalogGyro(1);
+	  double OGangle = gyro.getAngle(); // get current heading
+	  double Kp = 0.03;
 	 
 	
 	protected void initDefaultCommand() {
@@ -40,6 +43,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void JoystickDrive(XboxController Driver)
 	{
 		m_left.setInverted(true);
@@ -57,38 +61,41 @@ public class DriveTrain_Subsystem extends Subsystem{
 		}
 		
 		
-		MainDrive.arcadeDrive(- Driver.getX(Hand.kLeft), YAxis);
+		MainDrive.arcadeDrive(-(Driver.getX(Hand.kLeft)), YAxis);
 		
 	}
 
-	public void SpinTest()
+	public void DistanceTest()
 	{
-		Timer testTime = new Timer();
-		
-		while(testTime.get() < 0.5)
+		while(getDistance() > 36)
 		{
-		m_left.set(0.15);
-		m_right.set(-0.15);
+			m_left.set(0);
+			m_right.set(0);
 		}
-		
-		m_left.set(0);
-		m_right.set(0);
+		while(getDistance() <= 36)
+		{
+			m_left.set(-0.15);
+			m_right.set(-0.15);
+		}
 	}
+	
+	
 
+	@SuppressWarnings("deprecation")
 	public void Spin(char side, double speed)
 	{
-		  double Kp = 0.03;
-		 double OGangle = gyro.getAngle(); // get current heading
+		  
+		 
 	
 		if(side == 'L')
 		{
-			MainDrive.drive(speed, OGangle - 15 * Kp);
+			MainDrive.drive(speed, OGangle - 25 * Kp);
 		
 			
 		}
 		else
 		{
-		MainDrive.drive(speed, OGangle + 15 * Kp);
+		MainDrive.drive(speed, OGangle + 25 * Kp);
 			
 		}
 		
@@ -96,13 +103,14 @@ public class DriveTrain_Subsystem extends Subsystem{
 		
 			
 	}
-	/*
+	
 	public double getDistance()
 	{
-		ultra.setAutomaticMode(true); // turns on automatic mode
 		
-		double range = ultra.getRangeInches(); // reads the range on the ultrasonic sensor
-		return range;
+		double  rawrange = ultrasonic.getVoltage() * 36.6;
+        double range = rawrange + 12;
+		
+        return range;
 	}
 	
 	public char getFieldPosition()
@@ -143,15 +151,28 @@ public class DriveTrain_Subsystem extends Subsystem{
 		  if(gameData.charAt(0) == 'L')
 		  {
 			//Put left auto code here
-			//switch statement which field position and drive at angle accordingly
+			switch(getFieldPosition())
+			{
+			case 'R': MainDrive.drive(0.8, OGangle - 25 * Kp);
+				break;
+			case 'M':MainDrive.drive(0.8, OGangle - 45 * Kp);
+				break;
+			case 'L':MainDrive.drive(0.8, OGangle  * Kp);
+			}
 			  
 		  } else {
-			//Put right auto code here
-			 //switch statement which field position and drive at angle accordingly
+			  switch(getFieldPosition())
+				{
+				case 'R': MainDrive.drive(0.8, OGangle  * Kp);
+					break;
+				case 'M':MainDrive.drive(0.8, OGangle + 45 * Kp);
+					break;
+				case 'L':MainDrive.drive(0.8, OGangle + 25 * Kp);
+				}
 		  }
                 }
 	}
-*/
+
 	
 	public void Stop()
 	{	

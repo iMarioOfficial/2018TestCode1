@@ -23,7 +23,7 @@ public class TestAutonomous_Command  extends Command{
 	protected void execute()
 	{	  
 		
-		Robot.DriveTrain.SpinTest();
+		Robot.DriveTrain.DistanceTest();
 		
 	}
 	
