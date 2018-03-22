@@ -51,11 +51,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 		MainDrive.setSafetyEnabled(false);
 		m_left.setInverted(true);
 	
-
-		
-		MainDrive.arcadeDrive(-(Driver.getX(Hand.kLeft)), -(Driver.getY(Hand.kLeft)));
-		
-		
+		MainDrive.arcadeDrive(-(Driver.getX(Hand.kLeft)), -(Driver.getY(Hand.kLeft)));		
 		
 	}
 
@@ -83,8 +79,6 @@ public class DriveTrain_Subsystem extends Subsystem{
 	public void Spin(char side, double speed)
 	{
 		  
-		 
-	
 		if(side == 'L')
 		{
 			MainDrive.drive(speed, OGangle - 25 * Kp);
@@ -94,7 +88,7 @@ public class DriveTrain_Subsystem extends Subsystem{
 		else
 		{
 			//timer so it spins for 1/3 sec
-		MainDrive.drive(speed, OGangle + 25 * Kp);
+		MainDrive.drive(speed, OGangle + 50 * Kp);
 		//now get angle and drive straight	
 		}
 		
@@ -170,6 +164,14 @@ public class DriveTrain_Subsystem extends Subsystem{
 				}
 		  }
                 }
+                //drive forward
+         //       MainDrive.arcadeDrive(0.05,0.0);
+                
+                //rotate right
+           //     MainDrive.arcadeDrive(0.05, 0.64);
+                
+                //rotate left
+        //        MainDrive.arcadeDrive(0.03, 0.64);
 	}
 
 	
