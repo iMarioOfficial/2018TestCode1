@@ -1,5 +1,5 @@
-/*
- * package org.usfirst.frc.team5589.robot.commands;
+
+  package org.usfirst.frc.team5589.robot.commands;
  
 
 import org.usfirst.frc.team5589.robot.Robot;
@@ -44,4 +44,3 @@ public class Autonomous_Command  extends Command{
 
 
 }
-*/

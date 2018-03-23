@@ -106,8 +106,9 @@ public class DriveTrain_Subsystem extends Subsystem{
         return range;
 	}
 	
-	public char getFieldPosition()
-	{
+	//public char getFieldPosition()
+//	{
+		/*
 		char fieldPos = 'N';
 		
 		Spin('L', 0.15);
@@ -130,48 +131,66 @@ public class DriveTrain_Subsystem extends Subsystem{
 			fieldPos = 'M';
 		}
 		
-		
-			return fieldPos;
-	}
+		*/
+			//return fieldPos;
+		//	return 'R';
+//	}
 	
 	public void Autonomous()
 	{
-		
+		/*
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
                 if(gameData.length() > 0)
-                {
 		  if(gameData.charAt(0) == 'L')
 		  {
-			//Put left auto code here
-			switch(getFieldPosition())
+			m_left.set(-0.25);
+			m_right.set(-0.30);
+			}
+			else if (gameData.charAt(0) == 'R')
 			{
-			case 'R': MainDrive.drive(0.8, OGangle - 25 * Kp);
+			m_left.set(-0.30);
+			m_right.set(-0.25);
+			}
+			/*
+			case 'R': MainDrive.arcadeDrive(0.05, -0.64);
+				//MainDrive.drive(0.8, OGangle - 25 * Kp);
 				break;
-			case 'M':MainDrive.drive(0.8, OGangle - 45 * Kp);
+			case 'M':	MainDrive.arcadeDrive(0.05, -0.64);
+				//MainDrive.drive(0.8, OGangle - 45 * Kp);
 				break;
-			case 'L':MainDrive.drive(0.8, OGangle  * Kp);
+			case 'L':  MainDrive.arcadeDrive(0.05,0.0);
+				//MainDrive.drive(0.8, OGangle  * Kp);
 			}
 			  
 		  } else {
 			  switch(getFieldPosition())
 				{
-				case 'R': MainDrive.drive(0.8, OGangle  * Kp);
+				case 'R':  MainDrive.arcadeDrive(0.05,0.0);
+					// MainDrive.drive(0.8, OGangle  * Kp);
 					break;
-				case 'M':MainDrive.drive(0.8, OGangle + 45 * Kp);
+				case 'M':    MainDrive.arcadeDrive(0.05, 0.64);
+							//MainDrive.drive(0.8, OGangle + 45 * Kp);
 					break;
-				case 'L':MainDrive.drive(0.8, OGangle + 25 * Kp);
+				case 'L': MainDrive.arcadeDrive(0.05, 0.64);
+					//MainDrive.drive(0.8, OGangle + 25 * Kp);
 				}
 		  }
-                }
+         */       
+		//
+		
+		//drive forward
+                m_left.set(-0.25);
+                m_right.set(-0.25);
+             
                 //drive forward
-         //       MainDrive.arcadeDrive(0.05,0.0);
+            //  MainDrive.arcadeDrive(0.15,0.0);
                 
                 //rotate right
            //     MainDrive.arcadeDrive(0.05, 0.64);
                 
                 //rotate left
-        //        MainDrive.arcadeDrive(0.03, 0.64);
+        //        MainDrive.arcadeDrive(0.05, -0.64);
 	}
 
 	

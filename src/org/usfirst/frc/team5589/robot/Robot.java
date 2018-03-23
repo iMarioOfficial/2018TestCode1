@@ -14,12 +14,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-import org.usfirst.frc.team5589.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5589.robot.commands.Autonomous_Command;
 import org.usfirst.frc.team5589.robot.commands.TestAutonomous_Command;
 import org.usfirst.frc.team5589.robot.subsystems.ArmAndClaw_Subsystem;
 import org.usfirst.frc.team5589.robot.subsystems.DriveTrain_Subsystem;
-import org.usfirst.frc.team5589.robot.subsystems.ExampleSubsystem;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,7 +29,7 @@ import org.usfirst.frc.team5589.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends TimedRobot {
 	
-	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
+	
 	public static final DriveTrain_Subsystem DriveTrain = new DriveTrain_Subsystem();
 	public static final ArmAndClaw_Subsystem ArmAndClaw = new ArmAndClaw_Subsystem();
 	public static OI oi;
@@ -52,7 +51,7 @@ public class Robot extends TimedRobot {
 		
 		
 		
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+	
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
@@ -78,7 +77,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = new TestAutonomous_Command();
+		m_autonomousCommand = new Autonomous_Command();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
