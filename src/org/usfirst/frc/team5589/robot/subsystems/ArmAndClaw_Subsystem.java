@@ -15,6 +15,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	protected void initDefaultCommand() {
 
 		
+		
 	}
 	
 	//bring up arm according to Y value of right controller stick
@@ -36,7 +37,7 @@ public class ArmAndClaw_Subsystem extends Subsystem{
 	{
 		m_Claw.setSafetyEnabled(false);
 		double rstickXValue = Driver.getTriggerAxis(Hand.kLeft);
-		m_Claw.set(rstickXValue);
+		m_Claw.set(rstickXValue * 0.75);
 	
 		
 	}

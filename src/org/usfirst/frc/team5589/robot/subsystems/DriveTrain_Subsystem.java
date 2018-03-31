@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain_Subsystem extends Subsystem{
 	
+	public boolean done = false;
 	   Spark m_frontLeft = new Spark(0);
 	   Spark m_rearLeft = new Spark(1);
 	   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
@@ -180,8 +181,18 @@ public class DriveTrain_Subsystem extends Subsystem{
 		//
 		
 		//drive forward
-                m_left.set(-0.25);
+		
+		Timer.delay(2);
+		Timer timer = new Timer();
+		timer.start();
+		while(timer.get() < 8) {
+                m_left.set(-0.30);
                 m_right.set(-0.25);
+		}
+		timer.stop();
+		m_left.set(0.0);
+		m_right.set(0.0);
+		done = true;
              
                 //drive forward
             //  MainDrive.arcadeDrive(0.15,0.0);

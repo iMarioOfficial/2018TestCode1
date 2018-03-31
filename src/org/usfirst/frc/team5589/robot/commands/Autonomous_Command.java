@@ -32,7 +32,7 @@ public class Autonomous_Command  extends Command{
 	
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return Robot.DriveTrain.done;
 	}
 
 	
